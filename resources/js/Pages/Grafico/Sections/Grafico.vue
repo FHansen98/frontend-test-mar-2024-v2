@@ -18,7 +18,7 @@ function montarGrafico(dados) {
     if (chartRef.value && dados) {
         const ctx = chartRef.value.getContext('2d');
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: dados.labels,
                 datasets: [
