@@ -3,9 +3,25 @@
 @tailwind utilities;
 
 /* Fonte maior, cor branca com opaciadade, padding para estetica */
-.custom-mouse-position {
+.context-menu-popup {
   font-size: 15px;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 5px 10px;
   z-index: 1000; /* Para garantir que o componente fique acima de outros elementos */
+}
+
+#zoom-buttons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.zoom-button {
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  display: flex;
 }

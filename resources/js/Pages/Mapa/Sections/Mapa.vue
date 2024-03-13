@@ -42,10 +42,19 @@ function AdicionarEscala(map, escala) {
 
 // Declarada nova função para conseguir acessar propriedades da coordenada, como posição e adicionar uma classe
 function AdicionarCoordenadasMouse(map, configs) {
-    const coordinateLayout = L.control.mousePosition({ position: 'bottomleft', separator: ' | ', emptyString: 'Coordenadas: N/D', numDigits: 5 }).addTo(map);
+    const coordinateLayout = L.control.mousePosition({ position: 'bottomleft', separator: ' ___', emptyString: 'Coordenadas: N/D', numDigits: 5 }).addTo(map);
     // Adicionando uma classe personalizada ao elemento de coordenadas
-    coordinateLayout._container.classList.add('custom-mouse-position');
+    coordinateLayout._container.classList.add('context-menu-popup');
 }
+
+function zoomIn() {
+    ZoomInOut('in');
+}
+
+function zoomOut() {
+    ZoomInOut('out');
+}
+
 onMounted(() => {
     // Objeto com as configurações do Leaflet para criação do objeto map
     let configs = ConfigsLeaflet(configsMapa);
@@ -96,4 +105,8 @@ onMounted(() => {
 
 <template>
     <div id="map" class="z-[5] h-[calc(100vh)] max-h-[calc(100vh)]"></div>
+        <div id="zoom-buttons">
+            <button @click="zoomIn" class="zoom-button zoom-in">Zoom In</button>
+            <button @click="zoomOut" class="zoom-button zoom-out">Zoom Out</button>
+        </div>
 </template>
