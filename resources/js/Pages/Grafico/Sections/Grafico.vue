@@ -73,7 +73,6 @@ onMounted(() => {
 
 <template>
     <div>
-        {{ dados }}
         <canvas ref="chartRef" width="400" height="400"></canvas>
     </div>
 </template>
