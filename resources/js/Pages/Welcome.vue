@@ -8,6 +8,7 @@ defineProps({
     phpVersion: String,
 });
 
+// funcoes para mudar a rota da página 
 const redirectMaps = () => {
     window.location.href = '/mapa';
 };

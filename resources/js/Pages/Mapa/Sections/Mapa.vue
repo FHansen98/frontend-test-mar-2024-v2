@@ -47,6 +47,7 @@ function AdicionarCoordenadasMouse(map, configs) {
     coordinateLayout._container.classList.add('context-menu-popup');
 }
 
+// funcoes para dar zoom 
 function zoomIn() {
     ZoomInOut('in');
 }
@@ -55,13 +56,11 @@ function zoomOut() {
     ZoomInOut('out');
 }
 
+// funcao para mudar a rota da página
 const redirectGraph = () => {
     window.location.href = '/grafico';
 };
 
-// function ToggleRaster(nomeRaster) {
-//     rasters.forEach(raster => raster.nome == nomeRaster ? ToggleRasterTile(map, raster) : null);
-// };
 
 onMounted(() => {
     // Objeto com as configurações do Leaflet para criação do objeto map
@@ -116,7 +115,7 @@ onMounted(() => {
             <button @click="zoomOut" class="zoom-button zoom-out">Zoom Out</button>
         </div>
         <div id="map-controls">
-            <button @click="ToggleRasterTile('GoogleSat')" class="toggle-map-button">Alternar Mapa</button>
+            <button @click="ToggleRasterTile()" class="toggle-map-button">Alternar Mapa</button>
         </div>
         <button class="page-button" @click="redirectGraph">Ir para Gráficos</button>
 </template>

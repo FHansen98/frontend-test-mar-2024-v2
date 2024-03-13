@@ -5,7 +5,7 @@ import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
-
+// declaracao da variável com props
 const props = defineProps({
    dados: Object
 });
@@ -13,10 +13,11 @@ const props = defineProps({
 const chartRef = ref(null);
 const dados = props.dados;
 
+// funcao para redirecionar a pagina
 const redirectMaps = () => {
     window.location.href = '/mapa';
 };
-
+// funcao para montar o gráfico
 function montarGrafico(dados) {
     if (chartRef.value && dados) {
         const ctx = chartRef.value.getContext('2d');
@@ -43,6 +44,7 @@ function montarGrafico(dados) {
                     }
                 ]
             },
+            // propriedades do grafico
             options: {
                 scales: {
                     y: {
