@@ -42,7 +42,7 @@ function AdicionarEscala(map, escala) {
 
 // Declarada nova função para conseguir acessar propriedades da coordenada, como posição e adicionar uma classe
 function AdicionarCoordenadasMouse(map, configs) {
-    const coordinateLayout = L.control.mousePosition({ position: 'bottomleft', separator: ' ___', emptyString: 'Coordenadas: N/D', numDigits: 5 }).addTo(map);
+    const coordinateLayout = L.control.mousePosition({ position: 'bottomleft', separator: ' ___ ', emptyString: 'Coordenadas: N/D', numDigits: 5 }).addTo(map);
     // Adicionando uma classe personalizada ao elemento de coordenadas
     coordinateLayout._container.classList.add('context-menu-popup');
 }
@@ -54,6 +54,14 @@ function zoomIn() {
 function zoomOut() {
     ZoomInOut('out');
 }
+
+const redirectGraph = () => {
+    window.location.href = '/grafico';
+};
+
+// function ToggleRaster(nomeRaster) {
+//     rasters.forEach(raster => raster.nome == nomeRaster ? ToggleRasterTile(map, raster) : null);
+// };
 
 onMounted(() => {
     // Objeto com as configurações do Leaflet para criação do objeto map
@@ -95,8 +103,6 @@ onMounted(() => {
     // Adiciona os overlays (TileLayers)
     AdicionaOverlaysPadrao(map, rasters);
 
-
-    // Cria a função "ToggleRaster" para alternar a visualização dos overlays
     window.ToggleRaster = function (nomeRaster) {
         rasters.forEach(raster => raster.nome == nomeRaster ? ToggleRasterTile(map, raster) : null);
     };
@@ -109,4 +115,8 @@ onMounted(() => {
             <button @click="zoomIn" class="zoom-button zoom-in">Zoom In</button>
             <button @click="zoomOut" class="zoom-button zoom-out">Zoom Out</button>
         </div>
+        <div id="map-controls">
+            <button @click="ToggleRasterTile('GoogleSat')" class="toggle-map-button">Alternar Mapa</button>
+        </div>
+        <button class="page-button" @click="redirectGraph">Ir para Gráficos</button>
 </template>

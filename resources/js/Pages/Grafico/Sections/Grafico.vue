@@ -13,6 +13,9 @@ const props = defineProps({
 const chartRef = ref(null);
 const dados = props.dados;
 
+const redirectMaps = () => {
+    window.location.href = '/mapa';
+};
 
 function montarGrafico(dados) {
     if (chartRef.value && dados) {
@@ -72,7 +75,8 @@ onMounted(() => {
 </script>
 
 <template>
+    <button class="page-button" @click="redirectMaps">Ir para Mapas</button>
     <div>
-        <canvas ref="chartRef" width="400" height="400"></canvas>
+        <canvas ref="chartRef" width="400" height="400" style="margin-top: 30px"></canvas>
     </div>
 </template>
