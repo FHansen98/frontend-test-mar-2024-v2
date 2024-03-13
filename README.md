@@ -22,8 +22,8 @@ Na aplicação, há apenas três rotas a serem trabalhadas, sendo elas:
 
 # Avaliação
 ## Lista de tarefas a serem cumpridas
-- [ ] Altere o layout da página inicial na rota "/" para exibir apenas dois cartões, onde ambos devem levar para as 2 rotas de: "/mapa" e "/grafico".
-- [ ] Na rota "/mapa", alterar o estilo do componente de coordenadas do mouse para que ele fique fixo no canto inferior esquerdo da tela (levando a barra de escala para a direita) e que ele fique com uma fonte maior, contendo um fundo branco com opacidade de 0.5.
+- [X] Altere o layout da página inicial na rota "/" para exibir apenas dois cartões, onde ambos devem levar para as 2 rotas de: "/mapa" e "/grafico".
+- [X] Na rota "/mapa", alterar o estilo do componente de coordenadas do mouse para que ele fique fixo no canto inferior esquerdo da tela (levando a barra de escala para a direita) e que ele fique com uma fonte maior, contendo um fundo branco com opacidade de 0.5.
 - [ ] Na rota "/mapa", alterar o estilo do componente de context menu (popup) de modo que ele tenha um maior espaçamento entre as coordenadas de latitude e longitude.
 - [ ] Na rota "/mapa", alterar o texto do componente de context menu (popup) de modo que além da latitude e longitude, ele também exiba a data/hora em que o usuário clicou com o botão direito no mapa. Formato: "DD/MM/YYYY HH:mm:ss". (Opcional: adicionar um ícone de calendário ao lado da data/hora).
 - [ ] Na rota "/mapa", adicione um botão flutuante no topo, à esquerda da tela, com um ícone de "zoom in" que você preferir, e que ao ser clicado, deve executar a função ZoomInOut('in') que já existe no código fornecido. Faça um ícone logo abaixo que faça a função ZoomInOut('out') ao ser clicado.

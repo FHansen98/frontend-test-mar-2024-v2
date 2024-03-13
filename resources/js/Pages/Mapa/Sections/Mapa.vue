@@ -7,6 +7,7 @@ import 'proj4';
 import 'proj4leaflet';
 import 'leaflet-mouse-position';
 import 'leaflet.vectorgrid';
+import '../../../../css/app.css'
 
 import {
     ConfigsLeaflet,
@@ -34,6 +35,17 @@ let rasters = props.projeto.rasters;
 
 let map = ref(null);
 
+// Declarada nova função para conseguir acessar propriedades da escala, como posição
+function AdicionarEscala(map, escala) {
+    L.control.scale({ imperial: false, metric: true, maxWidth: 200, position: 'bottomright', }).addTo(map);
+}
+
+// Declarada nova função para conseguir acessar propriedades da coordenada, como posição e adicionar uma classe
+function AdicionarCoordenadasMouse(map, configs) {
+    const coordinateLayout = L.control.mousePosition({ position: 'bottomleft', separator: ' | ', emptyString: 'Coordenadas: N/D', numDigits: 5 }).addTo(map);
+    // Adicionando uma classe personalizada ao elemento de coordenadas
+    coordinateLayout._container.classList.add('custom-mouse-position');
+}
 onMounted(() => {
     // Objeto com as configurações do Leaflet para criação do objeto map
     let configs = ConfigsLeaflet(configsMapa);
@@ -54,13 +66,13 @@ onMounted(() => {
     FuncaoMapaInformacoes(map);
     
     // Adiciona as coordenadas do mouse no canto inferior direito do mapa
-    configsMapa.funcionalidades.coordenadasMouse ? AdicionaCoordenadasMouse(map, configsMapa.configuracoesLeaflet) : configsMapa.funcionalidades.coordenadasMouse;
+    configsMapa.funcionalidades.coordenadasMouse ? AdicionarCoordenadasMouse(map, configsMapa.configuracoesLeaflet) : configsMapa.funcionalidades.coordenadasMouse;
 
     // Desabilitar o clique-duplo para função de zoom (nativa do Leaflet)
     map.doubleClickZoom.disable();
 
     // Adiciona escala ao mapa caso configsMapa.funcionalidades.escala seja true
-    configsMapa.funcionalidades.escala ? AdicionaEscala(map) : configsMapa.funcionalidades.escala;
+    configsMapa.funcionalidades.escala ? AdicionarEscala(map, 'metric') : configsMapa.funcionalidades.escala;
 
     // Adiciona atribuições (fonte de dados) ao mapa    
     configsMapa.funcionalidades.atribuicoes ? AdicionaAttribution(map, configsMapa.configuracoesLeaflet.atribuicaoPrefixo) : map.attributionControl.remove();
@@ -73,6 +85,7 @@ onMounted(() => {
 
     // Adiciona os overlays (TileLayers)
     AdicionaOverlaysPadrao(map, rasters);
+
 
     // Cria a função "ToggleRaster" para alternar a visualização dos overlays
     window.ToggleRaster = function (nomeRaster) {
